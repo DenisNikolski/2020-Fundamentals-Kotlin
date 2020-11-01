@@ -44,8 +44,11 @@ object KotlinWorkshop2 {
             // Storing user input in userInput variable
             // While running the program. Look at the console. Click inside the console window. Input a number.
             val userInput: Int = scanner.nextInt()
-            if (true) {
-
+            if (userInput == nonNullUpperBound) break
+            if (userInput > nonNullUpperBound) {
+                println("Your Guess is Higher")
+            } else {
+                println("Your Guess is Lower")
             }
         }
 
@@ -55,14 +58,13 @@ object KotlinWorkshop2 {
 
         // TODO 2: Uncomment. Initialize "numbersArray".
         //  It should be an array of Int with capacity = 5.
-//        val numbersArray =
+        val numbersArray = Array(5) { 1 }
 
         // TODO 3: Uncomment. Initialize "size".
         //  Change infinite while-loop condition. Limit user input with a size of "numbersArray".
         println("\nTraining 2. \"Fill in the collection\"")
-//        val size =
-        var counter = 0
-        while (true) {
+
+        for (index in 0..numbersArray.size) {
             print("Input a number in range 0..10 inclusive: ")
             val userInput: Int = scanner.nextInt()
 
@@ -72,16 +74,19 @@ object KotlinWorkshop2 {
             //  if userInput is 9 - add 2 + size of numbersArray.
             //  else don't add anything.
             //  Use "When" operator.
-            when {
-
+            when(userInput) {
+                3 -> numbersArray[index] = userInput
+                5 -> numbersArray[index] = numbersArray.size * 5
+                9 -> numbersArray[index] = numbersArray.size + 5
+                else -> println("I do nothing")
             }
-
-            counter++
         }
 
         // TODO 5: Print line by line elements of numbersArray with their indexes.
         //  Should looks like "index value".
-
+        for ((index, value) in numbersArray.withIndex()) {
+            println("$index: $value")
+        }
     }
 
 

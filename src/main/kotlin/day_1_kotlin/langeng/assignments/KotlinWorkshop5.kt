@@ -28,15 +28,32 @@ class Bicycle: Transport(1) {
 // TODO 1: Create a new interface that will be appropriate for new classes below.
 // ? By convention, names of Classes and Interfaces start with an upper case letter and use the camel case.
 // Example: "SomeLongClassName".
-//interface ...
+interface Beapabble {
+    fun beap()
+}
 
 // TODO 2: Write your own class Bus and some Car.
 //  Instead of writing it from scratch, extend it from the Transport class and your new interface.
 // ? Class can extends only one other class, but implements many interfaces, i.e.:
 // class Kitty(): Cat, Cuteable, Sleepable, Furryable {}
 
-//class Bus ...
-//class Car ...
+class Bus(passengersCount: Int) : Transport(passengersCount), Beapabble, Driveable {
+    override fun beap() {
+        println("Bus beap")
+    }
+    override fun drive() {
+        println("Bus drive")
+    }
+}
+
+class Car(passengersCount: Int) : Transport(passengersCount), Beapabble, Driveable {
+    override fun beap() {
+        println("car beap")
+    }
+    override fun drive() {
+        println("car drive")
+    }
+}
 
 // TODO 3: Test your transport in appropriate sections
 object VehiclesTest {
@@ -51,17 +68,22 @@ object VehiclesTest {
 
     private fun testBus() {
         println("Testing how bus drives...")
-//        val bus = ...
+        val bus = Bus(55)
+        bus.drive()
+        bus.beap()
     }
 
     private fun testCar() {
         println("Testing how car drives...")
-//        val car = ...
+        val car = Car(5)
+        car.drive()
+        car.beap()
     }
 
     private fun testBicycle() {
         println("Testing how bicycle drives...")
-//        ...
+        val bicycle = Bicycle()
+        bicycle.drive()
     }
 
 
